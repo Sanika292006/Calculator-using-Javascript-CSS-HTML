@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width , initial-scale=1.0">
+    <title>Simple Calculator</title>
+    <link rel ="Stylesheet" href="abc.css">
+
+</head>
+
+<body>
+<h1>Hey! I am a Calculator</h1>
+  <h2> Use me to perform an arithmetic operations...</h2>
+        <div class="calculator">
+          <div class="display" id="display">0</div>
+          <div class="buttons">
+
+            <button onclick="appendToDisplay('%')" class="operator">%</button>
+            <button onclick="clearDisplay()" class="operator">AC</button>
+            <button onclick="clearLastElement()" class="operator">DE</button>
+            <button onclick="appendToDisplay('/')" class="operator">/</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('*')" class="operator">*</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('-')" class="operator">-</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('+')" class="operator">+</button>
+            <button onclick="appendToDisplay('00')">00</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')" class="operator">.</button>
+            <button onclick="calculateResult()" class="operator">=</button>
+            
+          </div>
+        </div>
+
+
+        <script>
+
+            let currentDisplay = "0"; 
+            let resultDisplay //=false ; 
+
+            // Function to append a value to the current display
+            function appendToDisplay(value) {
+                if (currentDisplay === "0" || resultDisplay) {
+                  currentDisplay = value;
+                } else {
+                  currentDisplay += value;
+                }
+              
+                 //resultDisplay = false;
+              
+                updateDisplay();
+
+              }
+
+
+          // Function to update the calculator display with the current content
+        function updateDisplay() {
+            const displayElement = document.getElementById("display");
+            displayElement.textContent = currentDisplay;
+          }
+
+
+          //Function to calculate and display the result
+        function calculateResult() {
+            try {
+              const result = eval(currentDisplay);
+          
+              currentDisplay += "\n=" + result.toString();
+          
+              updateDisplay();
+            } catch (error) 
+            {
+              currentDisplay += "\nError";
+          
+              updateDisplay();
+            }
+          
+            //resultDisplay = true;
+          }
+
+        // Function to clear the last element from the current display
+
+        function clearLastElement() {
+            currentDisplay = currentDisplay.slice(0, -1);
+          
+            if (currentDisplay === "") {
+              currentDisplay = "0";
+            }
+              updateDisplay();
+          }
+
+
+          //Function to clear the entire display
+        function clearDisplay() 
+        {
+            currentDisplay = "0"; 
+            //resultDisplay = false; 
+            updateDisplay();
+          }
+
+        </script>
+
+</body>
+</html>
+
+
+
+ 
+
+
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simple Calculator</title>
+  <style>
+    input[type="button"] {
+      width: 70px;
+      height: 70px;
+      font-size: 24px;
+      margin: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2> Calculator</h2>
+  <input type="text" id="display" disabled><br>
+
+  <input type="button" value="7" onclick="appendToDisplay('7')">
+  <input type="button" value="8" onclick="appendToDisplay('8')">
+  <input type="button" value="9" onclick="appendToDisplay('9')">
+  <input type="button" value="/" onclick="appendToDisplay('/')">
+  <br>
+
+  <input type="button" value="4" onclick="appendToDisplay('4')">
+  <input type="button" value="5" onclick="appendToDisplay('5')">
+  <input type="button" value="6" onclick="appendToDisplay('6')">
+  <input type="button" value="*" onclick="appendToDisplay('*')">
+  <br>
+
+  <input type="button" value="1" onclick="appendToDisplay('1')">
+  <input type="button" value="2" onclick="appendToDisplay('2')">
+  <input type="button" value="3" onclick="appendToDisplay('3')">
+  <input type="button" value="-" onclick="appendToDisplay('-')">
+  <br>
+
+  <input type="button" value="0" onclick="appendToDisplay('0')">
+  <input type="button" value="." onclick="appendToDisplay('.')">
+  <input type="button" value="=" onclick="calculate()">
+  <input type="button" value="+" onclick="appendToDisplay('+')">
+  <br>
+
+  <input type="button" value="Clear" onclick="clearDisplay()">
+  
+  <script>
+    function appendToDisplay(value) {
+      document.getElementById('display').value += value;
+    }
+
+    function calculate() {
+      try {
+        var result = eval(document.getElementById('display').value);
+        document.getElementById('display').value = result;
+      } catch (error) {
+        document.getElementById('display').value = 'Error';
+      }
+    }
+
+    function clearDisplay() {
+      document.getElementById('display').value = '';
+    }
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+ -->
